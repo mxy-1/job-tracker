@@ -1,7 +1,9 @@
 require("dotenv").config()
 
 const express = require("express")
+const cors = require("cors")
 const mongoose = require("mongoose")
+
 const app = express()
 const applications = require("./routes/applications")
 
@@ -9,6 +11,7 @@ const applications = require("./routes/applications")
 //     res.send("hello world")
 // })
 
+app.use(cors())
 app.use(express.json()) // parses any data
 
 app.use("/api/applications", applications)
