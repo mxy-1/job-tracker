@@ -34,9 +34,9 @@ const getApplicationById = async (req, res) => {
 const patchApplicationById = async (req, res) => {
     try {
         const { id } = req.params
-        const { company, job_title } = req.body
+        // const { company, job_title } = req.body
 
-        await Application.findByIdAndUpdate(id, { company, job_title })
+        await Application.findByIdAndUpdate(id, {...req.body})
         res.sendStatus(201)
     } catch (error) {
         res.status(400).send({ error: error.message })
