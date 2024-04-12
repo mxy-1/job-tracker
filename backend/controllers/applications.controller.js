@@ -10,10 +10,8 @@ const getAllApplications = async (req, res) => {
 }
 
 const postApplication = async (req, res) => {
-    const { company, job_title } = req.body
-
     try {
-        const application = await Application.create({ company, job_title })
+        const application = await Application.create({...req.body})
         res.status(201).send({ application })
     } catch (error) {
         res.status(400).send({ error: error.message })
@@ -34,7 +32,6 @@ const getApplicationById = async (req, res) => {
 const patchApplicationById = async (req, res) => {
     try {
         const { id } = req.params
-        // const { company, job_title } = req.body
 
         await Application.findByIdAndUpdate(id, {...req.body})
         res.sendStatus(201)
