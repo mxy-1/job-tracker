@@ -4,11 +4,11 @@ export type ApplicationType = {
   location: string
   hours: number
   salary: number
-  dateApplied: Date
-  deadline: Date
+  dateApplied: string
+  deadline: string
   status: string
   comments: string
-  interview: Date
-  createdAt: Date
+  interview: string
+  createdAt: string
 }
 
