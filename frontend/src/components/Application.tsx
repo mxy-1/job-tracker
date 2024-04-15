@@ -6,21 +6,26 @@ const Application = ({ application }: { application: ApplicationType }) => {
 
     return (
         <div className="application">
-            <p>{formatDate(application.dateApplied)}</p>
-            <p>Deadline: {formatDate(application.deadline)}</p>
 
-            {application.interview && <p>Interview: {formatDate(application.interview)}</p>}
+            <div className="dates">
+                <p>{formatDate(application.dateApplied)}</p>
+                <div>
+                    {/* {!application.dateApplied && <p>Deadline: {formatDate(application.deadline)}</p>} */}
+                    {<p>Deadline: {formatDate(application.deadline)}</p>}
 
-            <h2>{application.jobTitle}</h2>
-            <h3>{application.company}</h3>
-            
+                    {application.interview && <p>Interview: {formatDate(application.interview)}</p>}
+                </div>
+            </div>
+
+            <h2 className="job-title">{application.jobTitle}</h2>
+            <h3 className="company">{application.company}</h3>
+
             <p>{application.location}</p>
-            {application.hours && <p>{application.hours} hrs/week</p>}
-            {application.salary && <p>£{application.salary}</p>}
 
+            {application.salary && <p className="salary">£{application.salary} </p>}
+            {application.hours && <p className="hours">{application.hours} hrs/week</p>}
 
-            {application.comments && <p>Comments:</p>}
-            <p>{application.comments}</p>
+            <p className="comments">{application.comments}</p>
 
             <p>{application.status}</p>
 

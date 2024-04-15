@@ -1,4 +1,36 @@
 .application {
     border: 2px solid orange;
     border-radius: 6px;
+    margin: 1rem;
+    padding: 1rem;
+}
+
+.dates {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+}
+
+.job-title {
+    margin: 0;
+}
+
+.company {
+    margin: 0;
+    font-weight: 700;
+}
+
+.comments {
+    font-size: 12px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+.salary,
+.hours {
+    display: inline;
+}
+
+.salary {
+    padding-right: 16px;
 }
