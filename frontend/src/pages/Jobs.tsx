@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react';
 import Application from '../components/Application';
 import { ApplicationType } from '../types/Application.type';
-
-
+import "./Jobs.styles.css"
 
 export const Jobs = () => {
   const [applications, setApplications] = useState<null | ApplicationType[]>(null);
@@ -29,8 +28,10 @@ export const Jobs = () => {
   // ]
   return (
     <div>
-      <h2>{applications?.length || "0"} </h2>
-      <p>jobs applied to</p>
+      <div className='count'>
+        <h1>{applications?.length || "0"} </h1>
+        <p>jobs applied to</p>
+      </div>
 
       <div>
         {applications && applications.map(application => (

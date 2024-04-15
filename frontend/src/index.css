@@ -2,6 +2,12 @@
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
+  --bg-colour: #F2F1EF;
+  --teal: #97BCC7;
+  --blue-green: #006884;
+  --dark-green: #053D57;
+  background-color: var(--bg-colour);
+  color: var(--dark-green);
 /* 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
@@ -15,6 +21,18 @@
 
 p {
   margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+a:visited {
+  color: var(--dark-green)
 }
 /* 
 a {
