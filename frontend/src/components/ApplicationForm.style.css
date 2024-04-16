@@ -1,0 +1,14 @@
+.application-container {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid var(--teal);
+    border-radius: 10px;
+}
+
+label {
+    display: grid;
+    grid-template-columns: 120px 260px;
+    margin-bottom: 8px;
+}
+
