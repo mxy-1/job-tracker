@@ -2,15 +2,13 @@ import { useEffect, useState } from 'react';
 import Application from '../components/Application';
 import { ApplicationType } from '../types/Application.type';
 import "./Jobs.styles.css"
+import { getAllApplications } from '../utils/api';
 
 export const Jobs = () => {
   const [applications, setApplications] = useState<null | ApplicationType[]>(null);
 
   useEffect(() => {
-    fetch("http://localhost:4000/api/applications/")
-      .then((res) => {
-        return res.json()
-      })
+    getAllApplications()
       .then(data => {
         setApplications(data.applications)
       })
@@ -35,7 +33,7 @@ export const Jobs = () => {
 
       <div>
         {applications && applications.map(application => (
-          <Application application={application} key={application.createdAt.toString()}/>
+          <Application application={application} key={application.createdAt.toString()} />
         ))}
       </div>
     </div>
