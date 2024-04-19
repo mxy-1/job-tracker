@@ -2,6 +2,7 @@ import { useState } from "react";
 import { ApplicationDataType } from "../types/ApplicationData.type";
 import "./ApplicationForm.style.css"
 import { getCurrentDate } from "../utils";
+import {postFormData} from "../utils/api.ts"
 
 const ApplicationForm = () => {
 
@@ -20,40 +21,50 @@ const ApplicationForm = () => {
 
     const [applicationData, setApplicationData] = useState<ApplicationDataType>(initialApplicationData);
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>):void => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>): void => {
         const value = e.target.value
         const name = e.target.name
 
         setApplicationData((prevApplicationData) => {
-            return {...prevApplicationData, [name]: value}
+            return { ...prevApplicationData, [name]: value }
         })
+
     }
 
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault()
+        postFormData(applicationData)
+            .then(data => {
+                console.log("Success:", data)
+                setApplicationData(initialApplicationData)
+            })
+            .catch(err => console.log("Error:", err))
+    }
     return (
         <div className="application-container">
             <h2>Job application</h2>
 
-            <form>
+            <form onSubmit={handleSubmit}>
                 <label>
-                    Date <input type="date" id="date" name="date" value={applicationData.date} onChange={handleChange}/>
+                    Date <input type="date" id="date" name="date" value={applicationData.date} onChange={handleChange} required/>
                 </label>
                 <label>
-                    Company <input type="text" name="company" value={applicationData.company}  onChange={handleChange}/>
+                    Company <input type="text" name="company" value={applicationData.company} onChange={handleChange} />
                 </label>
                 <label>
-                    Job title <input type="text" name="title" required value={applicationData.title}  onChange={handleChange}/>
+                    Job title <input type="text" name="title" required value={applicationData.title} onChange={handleChange} />
                 </label>
                 <label>
-                    Location <input type="string" name="location" value={applicationData.location}  onChange={handleChange}/>
+                    Location <input type="string" name="location" value={applicationData.location} onChange={handleChange} />
                 </label>
                 <label>
-                    Hours/week <input type="number" name="hours" min={0} max={100} value={applicationData.hours}  onChange={handleChange}/>
+                    Hours/week <input type="number" name="hours" min={0} max={100} value={applicationData.hours} onChange={handleChange} />
                 </label>
                 <label>
-                    Salary (£/year) <input type="number" name="salary" min={0} value={applicationData.salary}  onChange={handleChange}/>
+                    Salary (£/year) <input type="number" name="salary" min={0} value={applicationData.salary} onChange={handleChange} />
                 </label>
                 <label>
-                    Deadline <input type="date" name="deadline" value={applicationData.deadline}  onChange={handleChange}/>
+                    Deadline <input type="date" name="deadline" value={applicationData.deadline} onChange={handleChange} />
                 </label>
                 <label>
                     Status
@@ -69,10 +80,10 @@ const ApplicationForm = () => {
                 </label>
 
                 <label>
-                    Interview <input type="date" value={applicationData.interview}  onChange={handleChange}/>
+                    Interview <input type="date" value={applicationData.interview} onChange={handleChange} />
                 </label>
                 <label>
-                    Comments <textarea rows={4} value={applicationData.comments}  onChange={handleChange}/>
+                    Comments <textarea rows={4} name="comments" value={applicationData.comments} onChange={handleChange} />
                 </label>
                 <button type="submit">Add</button>
             </form>

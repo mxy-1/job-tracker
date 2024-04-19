@@ -11,16 +11,16 @@ const Application = ({ application }: { application: ApplicationType }) => {
         <div className="application">
 
             <div className="dates">
-                <p>{formatDate(application.dateApplied)}</p>
+                <p>{formatDate(application.date)}</p>
                 <div>
-                    {/* {!application.dateApplied && <p>Deadline: {formatDate(application.deadline)}</p>} */}
-                    {<p>Deadline: {formatDate(application.deadline)}</p>}
+                    {/* {!application.date && <p>Deadline: {formatDate(application.deadline)}</p>} */}
+                    {application.deadline && <p>Deadline: {formatDate(application.deadline)}</p>}
 
                     {application.interview && <p>Interview: {formatDate(application.interview)}</p>}
                 </div>
             </div>
 
-            <h2 className="job-title">{application.jobTitle}</h2>
+            <h2 className="job-title">{application.title}</h2>
             <h3 className="company">{application.company}</h3>
 
             <p><IoLocationOutline size={14} color="#006884"/> {application.location}</p>
