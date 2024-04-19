@@ -83,9 +83,9 @@ const ApplicationForm = () => {
                     Interview <input type="date" value={applicationData.interview} onChange={handleChange} />
                 </label>
                 <label>
-                    Comments <textarea rows={4} name="comments" value={applicationData.comments} onChange={handleChange} />
+                    Comments <textarea rows={5} name="comments" value={applicationData.comments} onChange={handleChange} />
                 </label>
-                <button type="submit">Add</button>
+                <button type="submit" className="add">Add</button>
             </form>
         </div>
     );
