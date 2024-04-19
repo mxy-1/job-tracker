@@ -1,10 +1,10 @@
 export type ApplicationType = {
-  jobTitle: string
+  title: string
   company: string
   location: string
   hours: number
   salary: number
-  dateApplied: string
+  date: string
   deadline: string
   status: string
   comments: string
