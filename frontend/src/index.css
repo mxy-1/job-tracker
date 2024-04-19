@@ -24,16 +24,17 @@ p {
 }
 
 a {
-  text-decoration: none;
+  all: unset
 }
 
 ul {
   list-style: none;
 }
 
-a:visited {
-  color: var(--dark-green)
+a:hover {
+  cursor: pointer;
 }
+
 /* 
 a {
   font-weight: 500;
