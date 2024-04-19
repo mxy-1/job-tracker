@@ -2,7 +2,7 @@ const Application = require("../models/applications.models")
 
 const getAllApplications = async (req, res) => {
     try {
-        const applications = await Application.find({})
+        const applications = await Application.find({}).sort({date: "desc"})
         res.status(200).send({ applications })
     } catch (error) {
         res.status(404).send({ error: error.message })
