@@ -46,7 +46,7 @@ const ApplicationForm = () => {
 
             <form onSubmit={handleSubmit}>
                 <label>
-                    Date <input type="date" id="date" name="date" value={applicationData.date} onChange={handleChange} required/>
+                    Date <input type="date" id="date" name="date" value={applicationData.date} onChange={handleChange}/>
                 </label>
                 <label>
                     Company <input type="text" name="company" value={applicationData.company} onChange={handleChange} />

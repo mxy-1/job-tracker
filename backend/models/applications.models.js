@@ -19,8 +19,7 @@ const applicationSchema = new Schema({
         type: Number
     },
     date: {
-        type: Date,
-        required: true
+        type: Date
     },
     deadline: {
         type: Date

@@ -11,7 +11,7 @@ const Application = ({ application }: { application: ApplicationType }) => {
         <div className="application">
 
             <div className="dates">
-                <p>{formatDate(application.date)}</p>
+                <p>{application.date ? formatDate(application.date) : ""}</p>
                 <div>
                     {/* {!application.date && <p>Deadline: {formatDate(application.deadline)}</p>} */}
                     {application.deadline && <p>Deadline: {formatDate(application.deadline)}</p>}
@@ -23,10 +23,10 @@ const Application = ({ application }: { application: ApplicationType }) => {
             <h2 className="job-title">{application.title}</h2>
             <h3 className="company">{application.company}</h3>
 
-            <p><IoLocationOutline size={14} color="#006884"/> {application.location}</p>
+            <p><IoLocationOutline size={14} color="#006884" /> {application.location}</p>
 
-            {application.salary && <p className="salary"><PiCoinLight size={13} color="#006884"/> £{application.salary} </p>}
-            {application.hours && <p className="hours"><GoClock size={13} color="#006884"/> {application.hours} hrs/week</p>}
+            {application.salary && <p className="salary"><PiCoinLight size={13} color="#006884" /> £{application.salary} </p>}
+            {application.hours && <p className="hours"><GoClock size={13} color="#006884" /> {application.hours} hrs/week</p>}
 
             <p className="comments">{application.comments}</p>
 
