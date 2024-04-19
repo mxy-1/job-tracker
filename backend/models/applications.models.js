@@ -5,7 +5,7 @@ const applicationSchema = new Schema({
     company: {
         type: String
     },
-    jobTitle: {
+    title: {
         type: String,
         required: true
     },
@@ -18,8 +18,9 @@ const applicationSchema = new Schema({
     salary: {
         type: Number
     },
-    dateApplied: {
-        type: Date
+    date: {
+        type: Date,
+        required: true
     },
     deadline: {
         type: Date
