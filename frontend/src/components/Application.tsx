@@ -6,7 +6,7 @@ import { GoClock } from "react-icons/go";
 import { PiCoinLight } from "react-icons/pi";
 
 const Application = ({ application }: { application: ApplicationType }) => {
-
+    
     return (
         <div className="application">
 

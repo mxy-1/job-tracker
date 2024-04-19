@@ -3,6 +3,7 @@ import Application from '../components/Application';
 import { ApplicationType } from '../types/Application.type';
 import "./Jobs.styles.css"
 import { getAllApplications } from '../utils/api';
+import { Link } from 'react-router-dom';
 
 export const Jobs = () => {
   const [applications, setApplications] = useState<null | ApplicationType[]>(null);
@@ -33,7 +34,9 @@ export const Jobs = () => {
 
       <div>
         {applications && applications.map(application => (
-          <Application application={application} key={application.createdAt.toString()} />
+          <Link to={`/jobs/${application._id}`} key={application._id.toString()}>
+            <Application application={application}/>
+          </Link>
         ))}
       </div>
     </div>

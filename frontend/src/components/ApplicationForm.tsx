@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ApplicationDataType } from "../types/ApplicationData.type";
 import "./ApplicationForm.style.css"
 import { getCurrentDate } from "../utils";
-import {postFormData} from "../utils/api.ts"
+import { postFormData, getSingleApplication } from "../utils/api.ts"
+import { useParams } from "react-router-dom";
 
 const ApplicationForm = () => {
+    const { id } = useParams()
 
     const initialApplicationData = {
         date: getCurrentDate(),
@@ -21,6 +23,27 @@ const ApplicationForm = () => {
 
     const [applicationData, setApplicationData] = useState<ApplicationDataType>(initialApplicationData);
 
+    useEffect(() => {
+        if (id) {  
+            getSingleApplication(id)
+                .then(({ application }): void => {
+                    ["date", "deadline", "interview"].forEach(item => {
+                        if (application[item]) {
+                            application[item] = application[item].slice(0, 10)
+                        }
+                    })
+                    setApplicationData(application)
+                })
+                .catch((error) => {
+                    console.log("Error", error)
+                })
+        }
+        else {
+            setApplicationData(initialApplicationData)
+        }
+    }, [id]);
+
+
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>): void => {
         const value = e.target.value
         const name = e.target.name
@@ -28,7 +51,6 @@ const ApplicationForm = () => {
         setApplicationData((prevApplicationData) => {
             return { ...prevApplicationData, [name]: value }
         })
-
     }
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -42,11 +64,11 @@ const ApplicationForm = () => {
     }
     return (
         <div className="application-container">
-            <h2>Job application</h2>
+            <h2>{id ? "Update job application" : "Job application"}</h2>
 
             <form onSubmit={handleSubmit}>
                 <label>
-                    Date <input type="date" id="date" name="date" value={applicationData.date} onChange={handleChange}/>
+                    Date <input type="date" id="date" name="date" value={applicationData.date} onChange={handleChange} />
                 </label>
                 <label>
                     Company <input type="text" name="company" value={applicationData.company} onChange={handleChange} />
@@ -85,7 +107,7 @@ const ApplicationForm = () => {
                 <label>
                     Comments <textarea rows={5} name="comments" value={applicationData.comments} onChange={handleChange} />
                 </label>
-                <button type="submit" className="add">Add</button>
+                <button type="submit" className="add">{id ? "Update" : "Add"}</button>
             </form>
         </div>
     );

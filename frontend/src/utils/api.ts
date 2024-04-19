@@ -5,6 +5,11 @@ export const getAllApplications = () => {
         .then(res => res.json())
 }
 
+export const getSingleApplication = (id: string) => {
+    return fetch("http://localhost:4000/api/applications/"+id)
+        .then(res => res.json())
+}
+
 export const postFormData = (formData: ApplicationDataType): Promise<ApplicationDataType> => {
     return fetch("http://localhost:4000/api/applications/", {
         method: "POST",
