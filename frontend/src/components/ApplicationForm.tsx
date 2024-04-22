@@ -86,6 +86,8 @@ const ApplicationForm = () => {
             .then(res => {
                 if (!res.ok) {
                     throw new Error("Failed to delete job application")
+                } else {
+                    navigate("/jobs")
                 }
             })
             .catch(err => console.log("Error:", err))
@@ -138,10 +140,9 @@ const ApplicationForm = () => {
                     Comments <textarea rows={5} name="comments" value={applicationData.comments} onChange={handleChange} />
                 </label>
                 <button type="submit" className="add">{id ? "Update" : "Add"}</button>
-                {id && <button onClick={handleClick}>Delete</button>}
             </form>
+            {id && <button onClick={handleClick}>Delete</button>}
         </div>
     );
 }
-
 export default ApplicationForm;

@@ -24,6 +24,7 @@
     font-size: 12px;
     margin-top: 4px;
     margin-bottom: 4px;
+    color: var(--blue-green)
 }
 
 .salary,
@@ -33,4 +34,49 @@
 
 .salary {
     padding-right: 16px;
+}
+
+.status {
+    font-size: 12px;
+    border: 1px solid var(--teal);
+    width: max-content;
+    padding: 2px 6px;
+    border-radius: 12px;
+    /* margin-top: 10px; */
+    border: none;
+}
+
+.Waiting {
+    background-color: rgb(248, 227, 158);
+}
+
+.Interviewing {
+    background-color: rgb(222, 182, 237);
+}
+
+.Unsuccessful {
+    background-color: rgb(249, 155, 155);
+}
+
+.answer {
+    background-color: rgb(226, 230, 244);
+}
+
+.Ghosted {
+    background-color: rgb(223, 223, 223);
+}
+
+.accepted {
+    /* background-color: rgb(179, 242, 183); */
+    background-color: rgb(212, 232, 183);
+
+}
+
+.rejected {
+    background-color: rgb(203, 215, 185);
+}
+
+.status-container {
+    display: flex;
+    flex-direction: row-reverse;
 }

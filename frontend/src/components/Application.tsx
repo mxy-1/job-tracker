@@ -23,14 +23,16 @@ const Application = ({ application }: { application: ApplicationType }) => {
             <h2 className="job-title">{application.title}</h2>
             <h3 className="company">{application.company}</h3>
 
-            <p><IoLocationOutline size={14} color="#006884" /> {application.location}</p>
+            {application.location && <p><IoLocationOutline size={14} color="#006884" /> {application.location}</p>}
 
             {application.salary && <p className="salary"><PiCoinLight size={13} color="#006884" /> £{application.salary} </p>}
             {application.hours && <p className="hours"><GoClock size={13} color="#006884" /> {application.hours} hrs/week</p>}
 
             <p className="comments">{application.comments}</p>
 
-            <p>{application.status}</p>
+            <div className="status-container">
+                <p className={`status ${application.status}`} >{application.status}</p>
+            </div>
 
         </div>
     );
