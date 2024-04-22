@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { ApplicationDataType } from "../types/ApplicationData.type";
 import "./ApplicationForm.style.css"
 import { getCurrentDate } from "../utils";
-import { postFormData, getSingleApplication, updateFormData } from "../utils/api.ts"
+import { postFormData, getSingleApplication, updateFormData, deleteApplication } from "../utils/api.ts"
 import { useParams, useNavigate } from "react-router-dom";
 
 const ApplicationForm = () => {
@@ -78,8 +78,20 @@ const ApplicationForm = () => {
                 })
                 .catch(err => console.log("Error:", err))
         }
-
     }
+
+    const handleClick = () => {
+        if (id) {
+            deleteApplication(id)
+            .then(res => {
+                if (!res.ok) {
+                    throw new Error("Failed to delete job application")
+                }
+            })
+            .catch(err => console.log("Error:", err))
+        }
+    }
+
     return (
         <div className="application-container">
             <h2>{id ? "Update job application" : "Job application"}</h2>
@@ -126,6 +138,7 @@ const ApplicationForm = () => {
                     Comments <textarea rows={5} name="comments" value={applicationData.comments} onChange={handleChange} />
                 </label>
                 <button type="submit" className="add">{id ? "Update" : "Add"}</button>
+                {id && <button onClick={handleClick}>Delete</button>}
             </form>
         </div>
     );

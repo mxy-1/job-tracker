@@ -30,3 +30,12 @@ export const updateFormData = (formData: ApplicationDataType, id: string): Promi
         body: JSON.stringify(formData)
     })
 }
+
+export const deleteApplication = (id: string) => {
+    return fetch("http://localhost:4000/api/applications/"+id, {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json",
+        },
+    })
+}
