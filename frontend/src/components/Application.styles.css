@@ -5,6 +5,10 @@
     padding: 1rem;
 }
 
+.application:hover {
+    box-shadow: 1px 1px 6px #97bcc7ca;
+}
+
 .dates {
     display: flex;
     justify-content: space-between;

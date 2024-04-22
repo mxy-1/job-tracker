@@ -4,7 +4,7 @@ import "./ApplicationForm.style.css"
 import { getCurrentDate } from "../utils";
 import { postFormData, getSingleApplication, updateFormData, deleteApplication } from "../utils/api.ts"
 import { useParams, useNavigate } from "react-router-dom";
-
+import { TiDeleteOutline } from "react-icons/ti";
 const ApplicationForm = () => {
     const { id } = useParams()
     const navigate = useNavigate()
@@ -40,9 +40,7 @@ const ApplicationForm = () => {
                 })
         }
         else {
-            setApplicationData(prevApplicationData => {
-                return { ...prevApplicationData, date: getCurrentDate() }
-            })
+            setApplicationData({...initialApplicationData, date: getCurrentDate()})
         }
     }, [id]);
 
@@ -91,12 +89,16 @@ const ApplicationForm = () => {
                 }
             })
             .catch(err => console.log("Error:", err))
+        } else {
+            setApplicationData(initialApplicationData)
         }
     }
 
     return (
         <div className="application-container">
-            <h2>{id ? "Update job application" : "Job application"}</h2>
+            <div className="delete-container"><button className="delete" onClick={handleClick}><TiDeleteOutline size={28} color="#97BCC7"/></button></div>
+
+            <h2 className="job-app">{id ? "Update job application" : "Job application"}</h2>
 
             <form onSubmit={handleSubmit}>
                 <label>
@@ -141,7 +143,6 @@ const ApplicationForm = () => {
                 </label>
                 <button type="submit" className="add">{id ? "Update" : "Add"}</button>
             </form>
-            {id && <button onClick={handleClick}>Delete</button>}
         </div>
     );
 }

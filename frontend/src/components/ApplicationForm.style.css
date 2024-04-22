@@ -48,3 +48,23 @@ select {
 
     cursor: pointer;
 }
+
+.delete {
+    all: unset;
+    padding-top: 10px;
+    padding-right: 10px;
+}
+
+.delete-container {
+    display: flex;
+    flex-direction: row-reverse;
+    width: 100%;
+}
+
+.delete:hover {
+    cursor: pointer;
+}
+
+.job-app {
+    margin-top: 0;
+}
