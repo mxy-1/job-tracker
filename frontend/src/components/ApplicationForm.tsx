@@ -2,14 +2,15 @@ import { useEffect, useState } from "react";
 import { ApplicationDataType } from "../types/ApplicationData.type";
 import "./ApplicationForm.style.css"
 import { getCurrentDate } from "../utils";
-import { postFormData, getSingleApplication } from "../utils/api.ts"
-import { useParams } from "react-router-dom";
+import { postFormData, getSingleApplication, updateFormData } from "../utils/api.ts"
+import { useParams, useNavigate } from "react-router-dom";
 
 const ApplicationForm = () => {
     const { id } = useParams()
+    const navigate = useNavigate()
 
     const initialApplicationData = {
-        date: getCurrentDate(),
+        date: "",
         company: "",
         title: "",
         location: "",
@@ -24,7 +25,7 @@ const ApplicationForm = () => {
     const [applicationData, setApplicationData] = useState<ApplicationDataType>(initialApplicationData);
 
     useEffect(() => {
-        if (id) {  
+        if (id) {
             getSingleApplication(id)
                 .then(({ application }): void => {
                     ["date", "deadline", "interview"].forEach(item => {
@@ -39,7 +40,9 @@ const ApplicationForm = () => {
                 })
         }
         else {
-            setApplicationData(initialApplicationData)
+            setApplicationData(prevApplicationData => {
+                return { ...prevApplicationData, date: getCurrentDate() }
+            })
         }
     }, [id]);
 
@@ -55,12 +58,27 @@ const ApplicationForm = () => {
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        postFormData(applicationData)
-            .then(data => {
-                console.log("Success:", data)
-                setApplicationData(initialApplicationData)
-            })
-            .catch(err => console.log("Error:", err))
+        if (id) {
+            updateFormData(applicationData, id)
+                .then(res => {
+                    setApplicationData(initialApplicationData)
+                    navigate("/jobs")
+                    if (!res.ok) {
+                        throw new Error("Failed to update job application")
+                    }
+                })
+                .catch(err => console.log("Error:", err))
+
+        } else {
+            postFormData(applicationData)
+                .then(data => {
+                    console.log("Success:", data)
+                    setApplicationData(initialApplicationData)
+                    navigate("/jobs")
+                })
+                .catch(err => console.log("Error:", err))
+        }
+
     }
     return (
         <div className="application-container">

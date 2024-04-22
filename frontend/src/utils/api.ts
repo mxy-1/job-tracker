@@ -20,3 +20,13 @@ export const postFormData = (formData: ApplicationDataType): Promise<Application
     })
         .then(res => res.json())
 }
+
+export const updateFormData = (formData: ApplicationDataType, id: string): Promise<Response> => {
+    return fetch("http://localhost:4000/api/applications/"+id, {
+        method: "PATCH",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData)
+    })
+}
