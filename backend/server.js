@@ -6,6 +6,7 @@ const mongoose = require("mongoose")
 
 const app = express()
 const applications = require("./routes/applications")
+const users = require("./routes/user")
 
 // app.get("/", (req, res) => {
 //     res.send("hello world")
@@ -14,7 +15,9 @@ const applications = require("./routes/applications")
 app.use(cors())
 app.use(express.json()) // parses any data
 
+//routes
 app.use("/api/applications", applications)
+app.use("/api/user", users)
 
 mongoose.connect(process.env.MONGO_URI)
     .then(() => {
