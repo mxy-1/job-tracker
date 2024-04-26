@@ -1,5 +1,4 @@
 const User = require("../models/user.model")
-const bcrypt = require("bcrypt")
 const jwt = require("jsonwebtoken")
 
 const createToken = (id) => {
@@ -8,7 +7,15 @@ const createToken = (id) => {
 
 // login
 const loginUser = async (req, res) => {
-    res.json({ msg: "login user" })
+    const {email, password} = req.body
+
+    try {
+        const user = await User.login(email, password)
+        const token = createToken(user._id)
+        res.status(200).send({email, token})
+    } catch (error) {
+        res.status(400).send({error: error.message})
+    }
 }
 
 
