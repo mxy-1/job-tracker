@@ -12,6 +12,9 @@ export const Nav = () => {
           <li>
             <Link to="/jobs/add-new" className="nav-link">New</Link>
           </li>
+          <li>
+            <Link to="/log-in" className="nav-link">Log In</Link>
+          </li>
         </ul>
       </nav>
       <Outlet />
