@@ -37,6 +37,20 @@ ul {
 a:hover {
   cursor: pointer;
 }
+.submit {
+  font-size: 14px;
+  padding: 6px 12px;
+  color: white;
+  background-color: var(--dark-green);
+  border: 2px solid var(--dark-green);
+  border-radius: 4px;
+}
+
+.submit:hover {
+  /* opacity: 90%; */
+  box-shadow: 1px 1px 6px #97BCC7;
+  cursor: pointer;
+}
 
 /* 
 a {
