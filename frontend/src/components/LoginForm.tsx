@@ -41,7 +41,7 @@ const LoginForm = () => {
                     <p className='account'>Don't have an account? <Link to="/sign-up" className='login' onClick={handleClick}>Sign up</Link></p>
                     : <p className='account'>Already have an account? <Link to="/log-in" className='login' onClick={handleClick}>Log in</Link></p>
             }
-            {error && <p>{error}</p>}
+            {error && <p className='error'>{error}</p>}
         </div>
     );
 }

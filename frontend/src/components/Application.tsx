@@ -1,5 +1,5 @@
 import { ApplicationType } from "../types/Application.type";
-import "./Application.styles.css"
+import "./Application.style.css"
 import { formatDate } from "../utils";
 import { IoLocationOutline } from "react-icons/io5";
 import { GoClock } from "react-icons/go";

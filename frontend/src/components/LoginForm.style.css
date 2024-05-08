@@ -14,3 +14,12 @@
 .disabled {
     color: var(--teal)
 }
+
+.error {
+    font-size: 12px;
+    /* border: 1px dashed rgb(183, 22, 22); */
+    padding: 2px 8px;
+    width:fit-content;
+    color: rgb(207, 20, 20);
+    background-color: rgb(255, 228, 228)
+}

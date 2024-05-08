@@ -30,25 +30,6 @@ select {
     font-size: 14px;
 }
 
-.add {
-    font-size: 14px;
-    padding: 6px 12px;
-    /* color: var(--dark-green);
-    background-color: white;
-    border: 2px solid var(--teal); */
-    color: white;
-    background-color: var(--dark-green);
-    border: 2px solid var(--dark-green);
-    border-radius: 4px;
-}
-
-.add:hover {
-    opacity: 90%;
-    /* background-color: var(--blue-green); */
-
-    cursor: pointer;
-}
-
 .delete {
     all: unset;
     padding-top: 10px;

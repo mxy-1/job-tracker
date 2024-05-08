@@ -141,7 +141,7 @@ const ApplicationForm = () => {
                 <label>
                     Comments <textarea rows={5} name="comments" value={applicationData.comments} onChange={handleChange} />
                 </label>
-                <button type="submit" className="add">{id ? "Update" : "Add"}</button>
+                <button type="submit" className="submit">{id ? "Update" : "Add"}</button>
             </form>
         </div>
     );
