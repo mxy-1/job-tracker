@@ -1,0 +1,16 @@
+.account {
+    font-size: 12px;
+    padding-top: 10px;
+}
+
+.login {
+    color: var(--blue-green)
+}
+
+.login:hover {
+    color: var(--dark-green)
+}
+
+.disabled {
+    color: var(--teal)
+}
