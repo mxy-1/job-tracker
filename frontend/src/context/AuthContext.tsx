@@ -1,18 +1,7 @@
 import { createContext, useReducer } from "react"
+import { AuthType, AuthContextType, ActionType } from "../types/Auth.type"
 
 export const AuthContext = createContext({} as AuthContextType)
-
-type AuthType = {
-    user: string | null
-}
-
-type ActionType = {
-    type: "LOGIN" | "LOGOUT", payload: string
-} 
-
-type AuthContextType = {
-    dispatch: React.Dispatch<ActionType>
-}
 
 export const authReducer = (state: AuthType, action: ActionType) => {
     switch (action.type) {
