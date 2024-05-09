@@ -1,8 +1,9 @@
 li {
     display: inline;
-    color: #F2F1EF;
+    color: var(--dark-green);
     /* background-color: var(--blue-green); */
     padding: 4px;
+    vertical-align: middle;
 }
 
 ul {
@@ -13,8 +14,13 @@ ul {
     position: fixed;
     bottom: 0;
     width: 100%;
-    height: 2rem;
-    background-color: var(--dark-green);
+    height: 40px;
+    background-color: var(--teal);
+    border-top: 2px solid var(--blue-green);
+    /* color: var(--dark-green); */
+    align-content: center;
+    flex-wrap: wrap;
+    
 }
 
 .nav-link {

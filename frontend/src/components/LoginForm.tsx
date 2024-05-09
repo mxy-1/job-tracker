@@ -38,15 +38,15 @@ const LoginForm = () => {
 
     return (
         <div>
-            {!user ?
-                <>
+            {!user &&
+                <div className='application-container'>
                     <form onSubmit={handleSubmit}>
-                        <h2>{login ? "Log In" : "Sign up"}</h2>
+                        <h2 className='login-text'>{login ? "Log in" : "Sign up"}</h2>
                         <label>Email:
                             <input
                                 type="email"
-                                onChange={e => setEmail(e.target.value)} 
-                                autoComplete='email'/>
+                                onChange={e => setEmail(e.target.value)}
+                                autoComplete='email' />
                         </label>
                         <label>Password:
                             <input
@@ -62,9 +62,9 @@ const LoginForm = () => {
                             : <p className='account'>Already have an account? <Link to="/log-in" className='login' onClick={handleClick}>Log in</Link></p>
                     }
                     {error && <p className='error'>{error}</p>}
-                </>
+                </div>}
 
-                :
+            {user &&
                 <>
                     <h2>{user.email}</h2>
                     <button className='submit' onClick={handleLogOut}>Log Out</button>

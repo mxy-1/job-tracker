@@ -29,3 +29,19 @@
     color: rgb(207, 20, 20);
     background-color: rgb(255, 228, 228)
 }
+
+.login-text{
+    text-align: center;
+}
+
+/* .login-form {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid var(--teal);
+    border-radius: 10px;
+    width: 380px;
+    margin: auto;
+    padding-bottom: 20px;
+    box-shadow: 1px 1px 6px #97bcc7ca;
+} */
