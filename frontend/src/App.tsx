@@ -4,7 +4,7 @@ import { Nav } from './components/Nav';
 import { Jobs } from './pages/Jobs';
 import { Form } from './pages/Form';
 import { Header } from './components/Header';
-import LogIn from './pages/Login';
+import Login from './pages/LogIn';
 
 function App() {
 
@@ -18,8 +18,8 @@ function App() {
           <Route path=":id" element={<Form />}/>
         </Route>
 
-        <Route path="log-in" element={<LogIn />}/>
-        <Route path="sign-up" element={<LogIn />}/>
+        <Route path="log-in" element={<Login />}/>
+        <Route path="sign-up" element={<Login />}/>
 
       </Routes>
       <Nav/>
