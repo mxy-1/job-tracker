@@ -1,4 +1,4 @@
-import { createContext, useReducer } from "react"
+import { createContext, useReducer, useEffect } from "react"
 import { AuthType, AuthContextType, ActionType } from "../types/Auth.type"
 
 export const AuthContext = createContext({} as AuthContextType)
@@ -19,6 +19,14 @@ export const AuthContextProvider = ({ children }: {children: React.ReactNode}) =
     const [state, dispatch] = useReducer(authReducer, {
         user: null 
     })
+
+    // chcek if there is user logged in
+    useEffect(() => {
+        const user = localStorage.getItem("user")
+        if (user) {
+            dispatch({type:"LOGIN", payload: JSON.parse(user)})
+        }
+    }, []);
 
     console.log("AuthContext state:", state)
 
