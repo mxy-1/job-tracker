@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import "./LoginForm.style.css"
 import { useSignUp } from "../hooks/useSignUp"
 import { useLogOut } from '../hooks/useLogOut';
+// import useLogIn from '../hooks/useLogIn';
 
 const LoginForm = () => {
     const [email, setEmail] = useState("");
@@ -10,14 +11,15 @@ const LoginForm = () => {
     const [login, setLogin] = useState(true);
 
     const {signUp, error, isLoading} = useSignUp()
+    const {logOut} = useLogOut()
+    // const {logIn, error, isLoading} = useLogIn()
 
     const handleSubmit = async (e: React.SyntheticEvent) => {
         e.preventDefault()
         if (login) {
-            console.log("login")
+            await signUp(email, password, false)
         } else {
-            await signUp(email, password)
-
+            await signUp(email, password, true)
         }
     }
 
@@ -25,7 +27,6 @@ const LoginForm = () => {
         setLogin(prevState => !prevState)
     }
 
-    const {logOut} = useLogOut()
 
     const handleLogOut = () => {
         logOut()

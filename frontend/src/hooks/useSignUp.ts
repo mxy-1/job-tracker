@@ -1,4 +1,4 @@
-import { postSignUp } from '../utils/api';
+import { postLogIn, postSignUp } from '../utils/api';
 import { useAuthContext } from './useAuthContext';
 import { useState } from 'react';
 
@@ -7,11 +7,17 @@ export const useSignUp = () => {
     const [isLoading, setIsLoading] = useState(false);
     const {dispatch} = useAuthContext()
 
-    const signUp = async (email: string, password: string) => {
+    const signUp = async (email: string, password: string, isSignUp: boolean) => {
         setIsLoading(true)
         setError(null)
 
-        const response = await postSignUp(email, password)
+        let response
+
+        if (isSignUp) {
+            response = await postSignUp(email, password)
+        } else {
+            response = await postLogIn(email, password)
+        }
         const json = await response.json()
 
         if (!response.ok) {
