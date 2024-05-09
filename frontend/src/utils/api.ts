@@ -39,3 +39,11 @@ export const deleteApplication = (id: string) => {
         },
     })
 }
+
+export const postSignUp = (email: string, password: string) => {
+    return fetch("http://localhost:4000/api/user/signup", {
+            method: "POST",
+            headers: {"Content-type": "application/json"},
+            body: JSON.stringify({email, password})
+        })
+}
