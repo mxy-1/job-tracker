@@ -6,7 +6,7 @@ export const getAllApplications = () => {
 }
 
 export const getSingleApplication = (id: string) => {
-    return fetch("http://localhost:4000/api/applications/"+id)
+    return fetch("http://localhost:4000/api/applications/" + id)
         .then(res => res.json())
 }
 
@@ -22,7 +22,7 @@ export const postFormData = (formData: ApplicationDataType): Promise<Application
 }
 
 export const updateFormData = (formData: ApplicationDataType, id: string): Promise<Response> => {
-    return fetch("http://localhost:4000/api/applications/"+id, {
+    return fetch("http://localhost:4000/api/applications/" + id, {
         method: "PATCH",
         headers: {
             "Content-Type": "application/json",
@@ -32,7 +32,7 @@ export const updateFormData = (formData: ApplicationDataType, id: string): Promi
 }
 
 export const deleteApplication = (id: string) => {
-    return fetch("http://localhost:4000/api/applications/"+id, {
+    return fetch("http://localhost:4000/api/applications/" + id, {
         method: "DELETE",
         headers: {
             "Content-Type": "application/json",
@@ -42,8 +42,16 @@ export const deleteApplication = (id: string) => {
 
 export const postSignUp = (email: string, password: string) => {
     return fetch("http://localhost:4000/api/user/signup", {
-            method: "POST",
-            headers: {"Content-type": "application/json"},
-            body: JSON.stringify({email, password})
-        })
+        method: "POST",
+        headers: { "Content-type": "application/json" },
+        body: JSON.stringify({ email, password })
+    })
+}
+
+export const postLogIn = (email: string, password: string) => {
+    return fetch("http://localhost:4000/api/user/login", {
+        method: "POST",
+        headers: { "Content-type": "application/json" },
+        body: JSON.stringify({ email, password })
+    })
 }
