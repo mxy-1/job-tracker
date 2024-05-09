@@ -3,7 +3,8 @@ export type AuthType = {
 }
 
 export type ActionType = {
-    type: "LOGIN" | "LOGOUT", payload: string
+    type: "LOGIN" | "LOGOUT"
+    payload: string
 } 
 
 export type AuthContextType = {
