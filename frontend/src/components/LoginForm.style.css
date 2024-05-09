@@ -11,8 +11,14 @@
     color: var(--dark-green)
 }
 
-.disabled {
-    color: var(--teal)
+.submit:disabled {
+    background-color: var(--blue-green);
+    border-color: var(--blue-green);
+}
+
+.submit:hover:disabled {
+    cursor: default;
+    box-shadow: none;
 }
 
 .error {

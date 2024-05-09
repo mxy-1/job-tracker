@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import "./LoginForm.style.css"
 import { useSignUp } from "../hooks/useSignUp"
+import { useLogOut } from '../hooks/useLogOut';
 
 const LoginForm = () => {
     const [email, setEmail] = useState("");
@@ -12,11 +13,22 @@ const LoginForm = () => {
 
     const handleSubmit = async (e: React.SyntheticEvent) => {
         e.preventDefault()
-        await signUp(email, password)
+        if (login) {
+            console.log("login")
+        } else {
+            await signUp(email, password)
+
+        }
     }
 
     const handleClick = () => {
         setLogin(prevState => !prevState)
+    }
+
+    const {logOut} = useLogOut()
+
+    const handleLogOut = () => {
+        logOut()
     }
 
     return (
@@ -33,7 +45,7 @@ const LoginForm = () => {
                         type="password"
                         onChange={e => setPassword(e.target.value)} />
                 </label>
-                <button disabled={isLoading} type="submit" className={isLoading? "disabled submit" : "submit"}>{login ? "Log in" : "Sign up"}</button>
+                <button disabled={isLoading} type="submit" className="submit">{login ? "Log in" : "Sign up"}</button>
 
             </form>
             {
@@ -42,6 +54,7 @@ const LoginForm = () => {
                     : <p className='account'>Already have an account? <Link to="/log-in" className='login' onClick={handleClick}>Log in</Link></p>
             }
             {error && <p className='error'>{error}</p>}
+            <button className='submit' onClick={handleLogOut}>Log Out</button>
         </div>
     );
 }
