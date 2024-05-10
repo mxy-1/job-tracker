@@ -5,26 +5,27 @@ import { Jobs } from './pages/Jobs';
 import { Form } from './pages/Form';
 import { Header } from './components/Header';
 import Login from './pages/LogIn';
+import PrivateRoute from './components/PrivateRoute';
 
 function App() {
 
-  return (
-    <BrowserRouter>
-      <Header />
-      <Routes>
-        <Route path="jobs">
-          <Route index element={<Jobs/>}/>
-          <Route path="add-new" element={<Form/>}/>
-          <Route path=":id" element={<Form />}/>
-        </Route>
+    return (
+        <BrowserRouter>
+            <Header />
+            <Routes>
+                <Route path="jobs">
+                    <Route index element={<PrivateRoute><Jobs /></PrivateRoute> } />
+                    <Route path="add-new" element={<PrivateRoute><Form /></PrivateRoute> } />
+                    <Route path=":id" element={<PrivateRoute><Form /></PrivateRoute> } />
+                </Route>
 
-        <Route path="log-in" element={<Login />}/>
-        <Route path="sign-up" element={<Login />}/>
+                <Route path="log-in" element={<Login />} />
+                <Route path="sign-up" element={<Login />} />
 
-      </Routes>
-      <Nav/>
-    </BrowserRouter>
-  )
+            </Routes>
+            <Nav />
+        </BrowserRouter>
+    )
 }
 
 export default App
