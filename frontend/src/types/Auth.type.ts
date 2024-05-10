@@ -12,7 +12,7 @@
 // }
 type UserType = {
     email: string
-    password: string
+    token: string
 }
 export type AuthType = {
     user: UserType | null

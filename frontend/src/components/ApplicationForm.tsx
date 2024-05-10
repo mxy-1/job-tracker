@@ -5,9 +5,17 @@ import { getCurrentDate } from "../utils";
 import { postFormData, getSingleApplication, updateFormData, deleteApplication } from "../utils/api.ts"
 import { useParams, useNavigate } from "react-router-dom";
 import { TiDeleteOutline } from "react-icons/ti";
+import { useAuthContext } from "../hooks/useAuthContext.ts";
+
 const ApplicationForm = () => {
     const { id } = useParams()
     const navigate = useNavigate()
+
+    const {user} = useAuthContext()
+    let token: string
+    if (user) {
+        token = user.token
+    }
 
     const initialApplicationData = {
         date: "",
@@ -25,8 +33,12 @@ const ApplicationForm = () => {
     const [applicationData, setApplicationData] = useState<ApplicationDataType>(initialApplicationData);
 
     useEffect(() => {
+        if (!user) {
+            throw Error ("User must be logged in")
+        }
+
         if (id) {
-            getSingleApplication(id)
+            getSingleApplication(id, token)
                 .then(({ application }): void => {
                     ["date", "deadline", "interview"].forEach(item => {
                         if (application[item]) {
@@ -56,8 +68,13 @@ const ApplicationForm = () => {
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
+
+        if (!user) {
+            throw Error("User must be loggged in")
+        }
+
         if (id) {
-            updateFormData(applicationData, id)
+            updateFormData(applicationData, id, token)
                 .then(res => {
                     setApplicationData(initialApplicationData)
                     navigate("/jobs")
@@ -68,7 +85,7 @@ const ApplicationForm = () => {
                 .catch(err => console.log("Error:", err))
 
         } else {
-            postFormData(applicationData)
+            postFormData(applicationData, token)
                 .then(data => {
                     console.log("Success:", data)
                     setApplicationData(initialApplicationData)
@@ -80,7 +97,7 @@ const ApplicationForm = () => {
 
     const handleClick = () => {
         if (id) {
-            deleteApplication(id)
+            deleteApplication(id, token)
             .then(res => {
                 if (!res.ok) {
                     throw new Error("Failed to delete job application")
