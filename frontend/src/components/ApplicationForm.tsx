@@ -12,8 +12,10 @@ const ApplicationForm = () => {
     const navigate = useNavigate()
 
     const {user} = useAuthContext()
+    const isLoggedIn = !!localStorage.getItem('user');
+
     let token: string
-    if (user) {
+    if (isLoggedIn && user) {
         token = user.token
     }
 
@@ -33,7 +35,7 @@ const ApplicationForm = () => {
     const [applicationData, setApplicationData] = useState<ApplicationDataType>(initialApplicationData);
 
     useEffect(() => {
-        if (!user) {
+        if (!isLoggedIn) {
             throw Error ("User must be logged in")
         }
 
@@ -54,7 +56,7 @@ const ApplicationForm = () => {
         else {
             setApplicationData({...initialApplicationData, date: getCurrentDate()})
         }
-    }, [id]);
+    }, [id, user]);
 
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>): void => {
@@ -69,7 +71,7 @@ const ApplicationForm = () => {
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
 
-        if (!user) {
+        if (!isLoggedIn) {
             throw Error("User must be loggged in")
         }
 
