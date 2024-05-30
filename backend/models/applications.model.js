@@ -33,6 +33,10 @@ const applicationSchema = new Schema({
     },
     interview: {
         type: Date
+    },
+    userId: {
+        type: String,
+        required: true
     }
     
 }, {timestamps: true})

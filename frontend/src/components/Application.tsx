@@ -9,7 +9,6 @@ const Application = ({ application }: { application: ApplicationType }) => {
     
     return (
         <div className="application">
-
             <div className="dates">
                 <p>{application.date ? formatDate(application.date) : ""}</p>
                 <div>

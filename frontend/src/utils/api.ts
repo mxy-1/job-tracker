@@ -26,7 +26,7 @@ export const postFormData = (formData: ApplicationDataType, token: string): Prom
             "Content-Type": "application/json",
             "Authorization": `Bearer: ${token}`
         },
-        body: JSON.stringify(formData)
+        body: JSON.stringify({...formData})
     })
         .then(res => res.json())
 }

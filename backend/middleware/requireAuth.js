@@ -12,10 +12,14 @@ const requireAuth = async (req, res, next) => {
     const token = authorization.split(" ")[1]
 
     try {
-        const {_id} = jwt.verify(token, process.env.SECRET)
+        const {id} = jwt.verify(token, process.env.SECRET)
 
+        console.log(id, "id")
         // add user key to req
-        req.user = await User.findById(_id).select("_id")
+        req.user = await User.findById(id).select("id")
+        // console.log(req.user._id, "user id")
+        req.user = id
+        console.log(req.user, "request")
         next()
 
     } catch (error) {

@@ -18,7 +18,6 @@ const ApplicationForm = () => {
     if (isLoggedIn && user) {
         token = user.token
     }
-
     const initialApplicationData = {
         date: "",
         company: "",
@@ -155,7 +154,7 @@ const ApplicationForm = () => {
                 </label>
 
                 <label>
-                    Interview <input type="date" value={applicationData.interview} onChange={handleChange} />
+                    Interview <input type="date" name="interview" value={applicationData.interview} onChange={handleChange} />
                 </label>
                 <label>
                     Comments <textarea rows={5} name="comments" value={applicationData.comments} onChange={handleChange} />
