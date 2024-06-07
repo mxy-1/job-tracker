@@ -49,7 +49,8 @@ const ApplicationForm = () => {
                     setApplicationData(application)
                 })
                 .catch((error) => {
-                    console.log("Error", error)
+                    navigate("/*")
+                    console.log("Error:", error)
                 })
         }
         else {
@@ -79,7 +80,7 @@ const ApplicationForm = () => {
                 .then(res => {
                     setApplicationData(initialApplicationData)
                     navigate("/jobs")
-        
+                    
                     if (!res.ok) {
                         throw new Error("Failed to update job application")
                     }
