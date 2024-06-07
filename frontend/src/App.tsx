@@ -6,6 +6,7 @@ import { Form } from './pages/Form';
 import { Header } from './components/Header';
 import Login from './pages/LogIn';
 import PrivateRoute from './components/PrivateRoute';
+import { PageNotFound } from './components/PageNotFound';
 
 function App() {
 
@@ -21,7 +22,7 @@ function App() {
 
                 <Route path="log-in" element={<Login />} />
                 <Route path="sign-up" element={<Login />} />
-
+                <Route path="*" element={<PageNotFound/ >}/>
             </Routes>
             <Nav />
         </BrowserRouter>
