@@ -1,6 +1,7 @@
 .jobs {
-    color: var(--blue-green);
+    text-decoration: underline;
 }
 .jobs:hover{
-    color: var(--teal);
+    color: var(--blue-green);
+
 }

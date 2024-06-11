@@ -4,7 +4,7 @@ export const PageNotFound = () => {
   return (
     <div className="application-container">
       <h2>Page not found</h2>
-      <p>Go back to <Link to="/jobs" className="jobs">jobs dashboard</Link></p>
+      <p>Go back to <Link to="/jobs" className="jobs">jobs</Link></p>
     </div>
   )
 }
