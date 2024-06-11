@@ -19,8 +19,12 @@
   -moz-osx-font-smoothing: grayscale; */
 }
 
+header {
+  margin: 1rem;
+}
 body {
   margin: 0;
+  padding-bottom: 3rem;
 }
 p {
   margin: 0;

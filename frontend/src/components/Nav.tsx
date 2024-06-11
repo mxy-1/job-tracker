@@ -10,13 +10,13 @@ export const Nav = () => {
       <nav>
         <ul>
           <li>
-            <Link to="/jobs" className="nav-link"><RxHamburgerMenu size={24}/></Link>
+            <Link to="/jobs" className="nav-link" title="Jobs" aria-label="Jobs"><RxHamburgerMenu size={24}/></Link>
           </li>
           <li>
-            <Link to="/jobs/add-new" className="nav-link"><PiNotePencil size={26}/></Link>
+            <Link to="/jobs/add-new" className="nav-link" title="Add new job" aria-label="Add new Job"><PiNotePencil size={26}/></Link>
           </li>
           <li>
-            <Link to="/log-in" className="nav-link"><BsPerson size={26}/></Link>
+            <Link to="/log-in" className="nav-link" title="Profile" aria-label="Profile"><BsPerson size={26}/></Link>
           </li>
         </ul>
       </nav>

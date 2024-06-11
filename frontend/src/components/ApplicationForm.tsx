@@ -115,54 +115,53 @@ const ApplicationForm = () => {
     }
 
     return (
-        <div className="application-container">
-            <div className="delete-container"><button className="delete" onClick={handleClick}><TiDeleteOutline size={28} color="#97BCC7"/></button></div>
-
-            <h2 className="job-app">{id ? "Update job application" : "Job application"}</h2>
-
-            <form onSubmit={handleSubmit}>
-                <label>
-                    Date <input type="date" id="date" name="date" value={applicationData.date} onChange={handleChange} />
-                </label>
-                <label>
-                    Company <input type="text" name="company" value={applicationData.company} onChange={handleChange} />
-                </label>
-                <label>
-                    Job title <input type="text" name="title" required value={applicationData.title} onChange={handleChange} />
-                </label>
-                <label>
-                    Location <input type="string" name="location" value={applicationData.location} onChange={handleChange} />
-                </label>
-                <label>
-                    Hours/week <input type="number" name="hours" min={0} max={100} value={applicationData.hours} onChange={handleChange} />
-                </label>
-                <label>
-                    Salary (£/year) <input type="number" name="salary" min={0} value={applicationData.salary} onChange={handleChange} />
-                </label>
-                <label>
-                    Deadline <input type="date" name="deadline" value={applicationData.deadline} onChange={handleChange} />
-                </label>
-                <label>
-                    Status
-                    <select name="status" value={applicationData.status} onChange={handleChange}>
-                        <option>Waiting to hear back</option>
-                        <option>Interviewing</option>
-                        <option>Unsuccessful</option>
-                        <option>No answer</option>
-                        <option>Ghosted</option>
-                        <option>Successful - accepted</option>
-                        <option>Successful - rejected</option>
-                    </select>
-                </label>
-
-                <label>
-                    Interview <input type="date" name="interview" value={applicationData.interview} onChange={handleChange} />
-                </label>
-                <label>
-                    Comments <textarea rows={5} name="comments" value={applicationData.comments} onChange={handleChange} />
-                </label>
-                <button type="submit" className="submit">{id ? "Update" : "Add"}</button>
-            </form>
+        <div className="application-container-wrapper">
+            <div className="application-container">
+                <div className="delete-container"><button className="delete" onClick={handleClick}><TiDeleteOutline size={28} color="#97BCC7"/></button></div>
+                <h2 className="job-app">{id ? "Update job application" : "Job application"}</h2>
+                <form onSubmit={handleSubmit}>
+                    <label>
+                        Date <input type="date" id="date" name="date" value={applicationData.date} onChange={handleChange} />
+                    </label>
+                    <label>
+                        Company <input type="text" name="company" value={applicationData.company} onChange={handleChange} />
+                    </label>
+                    <label>
+                        Job title <input type="text" name="title" required value={applicationData.title} onChange={handleChange} />
+                    </label>
+                    <label>
+                        Location <input type="string" name="location" value={applicationData.location} onChange={handleChange} />
+                    </label>
+                    <label>
+                        Hours/week <input type="number" name="hours" min={0} max={100} value={applicationData.hours} onChange={handleChange} />
+                    </label>
+                    <label>
+                        Salary (£/year) <input type="number" name="salary" min={0} value={applicationData.salary} onChange={handleChange} />
+                    </label>
+                    <label>
+                        Deadline <input type="date" name="deadline" value={applicationData.deadline} onChange={handleChange} />
+                    </label>
+                    <label>
+                        Status
+                        <select name="status" value={applicationData.status} onChange={handleChange}>
+                            <option>Waiting to hear back</option>
+                            <option>Interviewing</option>
+                            <option>Unsuccessful</option>
+                            <option>No answer</option>
+                            <option>Ghosted</option>
+                            <option>Successful - accepted</option>
+                            <option>Successful - rejected</option>
+                        </select>
+                    </label>
+                    <label>
+                        Interview <input type="date" name="interview" value={applicationData.interview} onChange={handleChange} />
+                    </label>
+                    <label>
+                        Comments <textarea rows={5} name="comments" value={applicationData.comments} onChange={handleChange} />
+                    </label>
+                    <button type="submit" className="submit">{id ? "Update" : "Add"}</button>
+                </form>
+            </div>
         </div>
     );
 }
