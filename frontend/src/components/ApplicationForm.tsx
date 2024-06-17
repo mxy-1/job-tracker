@@ -38,7 +38,7 @@ const ApplicationForm = () => {
             throw Error ("User must be logged in")
         }
 
-        if (id) {
+        if (id && token) {
             getSingleApplication(id, token)
                 .then(({ application }): void => {
                     ["date", "deadline", "interview"].forEach(item => {
