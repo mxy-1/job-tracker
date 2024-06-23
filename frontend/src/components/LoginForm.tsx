@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import "./LoginForm.style.css"
 import { useSignUp } from "../hooks/useSignUp"
 import { useLogOut } from '../hooks/useLogOut';
@@ -15,13 +15,22 @@ const LoginForm = () => {
     const { signUp, error, isLoading } = useSignUp()
     const { logOut } = useLogOut()
     // const {logIn, error, isLoading} = useLogIn()
+    const navigate = useNavigate()
+    const {state} = useLocation()
 
     const handleSubmit = async (e: React.SyntheticEvent) => {
         e.preventDefault()
+        let success
+
         if (login) {
-            await signUp(email, password, false)
+            success = await signUp(email, password, false)
+   
         } else {
-            await signUp(email, password, true)
+            success = await signUp(email, password, true)
+        }
+
+        if (success && state) {
+            navigate(state.prev)
         }
     }
 
