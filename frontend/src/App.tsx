@@ -4,7 +4,7 @@ import { Nav } from './components/Nav';
 import { Jobs } from './pages/Jobs';
 import { Form } from './pages/Form';
 import { Header } from './components/Header';
-import Login from './pages/LogIn';
+import Login from './pages/Profile';
 import PrivateRoute from './components/PrivateRoute';
 import { PageNotFound } from './components/PageNotFound';
 
